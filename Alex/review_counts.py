@@ -32,7 +32,7 @@ steam_reviews_schema = types.StructType([
 ])
 
 
-def main(inputs, output, byAppID):
+def main(inputs, output):
 
     steam_reviews = spark.read.format('csv').schema(steam_reviews_schema).option('header', 'true').load(inputs)
 
@@ -59,49 +59,24 @@ def main(inputs, output, byAppID):
     all_games = steam_reviews.select(col("app_id"), col("review_id")) \
                             .groupBy(col("app_id")).agg(F.count("review_id").alias("review_count")) \
                             .where(col("review_count") >= 500) \
-                            .select("app_id")
+                            .select("app_id", "review_count")
 
-    steam_reviews = steam_reviews.join(all_games.hint("broadcast"), ["app_id"])
+    steam_reviews = steam_reviews.select("app_id", "app_name").dropDuplicates(['app_id'])
 
-    currentSize = steam_reviews.count()
-    gameCount = all_games.count()
+    review_counts = steam_reviews.join(all_games.hint("broadcast"), ["app_id"]) \
+                                 .select("app_id", "app_name", "review_count") \
+                                 .orderBy(col("app_id").cast(types.IntegerType()))
 
-    print("Number of reviews:")
-    print("  Original data size:", originalSize)
-    print("  Current data size:", currentSize)
-    print("  Data Removed:", originalSize - currentSize)
-    print("")
-    print("Number of games:", gameCount)
-    print("")
+    review_counts.show(10)
 
-    steam_reviews.show(10)
-
-    # steam_reviews.write.csv(output, mode='overwrite')
-    if (byAppID):
-        steam_reviews.withColumn("game_id", F.lit(steam_reviews['app_id'])).write.partitionBy('game_id').parquet(output, mode='overwrite')
-    else:
-        steam_reviews.write.repartition(100).parquet(output, mode='overwrite')
+    review_counts.write.option("header", "true").option("delimiter", " ").csv(output)
 
 
 if __name__ == '__main__':
-    correctInput = True
     inputs = sys.argv[1]
     output = sys.argv[2]
-    if len(sys.argv) == 3:
-        byAppID = True
-    else:
-        byAppIDString = sys.argv[3]
-        if (byAppIDString.lower() not in ['true', 'false']):
-            print("3rd argument is optional, but should be either 'true' or 'false'!")
-            correctInput = False
-        if (byAppIDString.lower() == 'true'):
-            byAppID = True
-        else:
-            byAppID = False
-    
-    if (correctInput):
-        spark = SparkSession.builder.appName('steam reviews etl').getOrCreate()
-        assert spark.version >= '3.0' # make sure we have Spark 3.0+
-        spark.sparkContext.setLogLevel('WARN')
-        sc = spark.sparkContext
-        main(inputs, output, byAppID)
+    spark = SparkSession.builder.appName('steam reviews etl').getOrCreate()
+    assert spark.version >= '3.0' # make sure we have Spark 3.0+
+    spark.sparkContext.setLogLevel('WARN')
+    sc = spark.sparkContext
+    main(inputs, output)
