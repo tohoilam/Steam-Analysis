@@ -65,11 +65,11 @@ def main(inputs, output):
 
     review_counts = steam_reviews.join(all_games.hint("broadcast"), ["app_id"]) \
                                  .select("app_id", "app_name", "review_count") \
-                                 .orderBy(col("app_id").cast(types.IntegerType()))
+                                 .orderBy(F.desc(col("review_count").cast(types.IntegerType())))
 
     review_counts.show(10)
 
-    review_counts.write.option("header", "true").option("delimiter", " ").csv(output)
+    review_counts.write.option("header", "true").csv(output)
 
 
 if __name__ == '__main__':
