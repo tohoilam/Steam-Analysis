@@ -1,0 +1,44 @@
+Cluster 0 :
+    Atmospheric
+    Indie
+    RPG
+    Strategy
+
+Cluster 1 :
+    Action
+    Fantasy
+    Free to Play
+    Puzzle
+
+Cluster 2 :
+    Great Soundtrack
+    Simulation
+    Violent
+
+Cluster 3 :
+    Multiplayer
+
+Cluster 4 :
+    Singleplayer
+
+Cluster 5 :
+    2D
+    Early Access
+    Story Rich
+    VR
+
+Cluster 6 :
+    Adventure
+    Casual
+    Difficult
+
+
+
+
+
+
+
+
+
+
+
