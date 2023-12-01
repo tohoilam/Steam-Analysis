@@ -19,18 +19,20 @@ function App() {
                 <h1>Steam Reviews</h1>
             </div>
             <div className="nav">
-                <button
+                <div
                     className={`tab-button ${activeTab === 'Reviews' ? 'active' : ''}`}
+                    activeClassName="active"
                     onClick={() => handleTabClick('Reviews')}
                 >
                 Reviews
-                </button>
-                <button
+                </div>
+                <div
                     className={`tab-button ${activeTab === 'Recommendation' ? 'active' : ''}`}
+                    activeClassName="active"
                     onClick={() => handleTabClick('Recommendation')}
                 >
                 Game Recommendation
-                </button>
+                </div>
             </div>
             <div className="content">
                 {

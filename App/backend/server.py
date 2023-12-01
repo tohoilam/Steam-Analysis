@@ -1,6 +1,17 @@
 from flask import Flask
+import pickle
 
 app = Flask(__name__)
+
+# make global
+cosine_sim_loaded = None
+
+
+@app.route("/")
+def landing():
+    with open('cosine_sim.pkl', 'rb') as file:
+        global cosine_sim_loaded
+        cosine_sim_loaded = pickle.load(file)
 
 
 @app.route("/<game_id>/reviews")
@@ -42,8 +53,8 @@ def getReviews(game_id):
 def getRecommendations(game_id):
 
     return {
-        "content_recommendations": [{'game_id': 73829, 'rank': 1, 'score': 0.87,  'game_name': 'jkjjlks'}, {'game_id': 73829, 'rank': 2, 'score': 0.87,  'game_name': 'jkjjlks'}, {'game_id': 73829, 'rank': 3, 'score': 0.87,  'game_name': 'jkjjlks'}],
-        "collaborative_recommendations": [{'game_id': 73829, 'rank': 1, 'score': 0.87,  'game_name': 'jkjjlks'}, {'game_id': 73829, 'rank': 2, 'score': 0.87,  'game_name': 'jkjjlks'}, {'game_id': 73829, 'rank': 3, 'score': 0.87,  'game_name': 'jkjjlks'}],
+        "content_recommendations": [{'game_id': 73829, 'rank': 1, 'score': 0.87,  'game_name': 'fjkss fjkss fjkss fjkss fjkss fjkss fjkss fjkss fjkss fjkss fjkss fjkss fjkss fjkss '}, {'game_id': 73829, 'rank': 2, 'score': 0.87,  'game_name': 'jkjjlks'}, {'game_id': 73829, 'rank': 3, 'score': 0.87,  'game_name': 'jkjjlks'}],
+        "collaborative_recommendations": [{'game_id': 73829, 'rank': 1, 'score': 0.87,  'game_name': 'jkjjlks'}, {'game_id': 73829, 'rank': 2, 'score': 0.87,  'game_name': 'jkjjlks'}, {'game_id': 73829, 'rank': 3, 'score': 0.87,  'game_name': 'fjkss fjkss fjkss fjkss fjkss fjkss fjkss fjkss fjkss fjkss fjkss fjkss fjkss fjkss '}],
         "game_id": game_id
     }
 
