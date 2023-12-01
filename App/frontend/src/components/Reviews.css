@@ -1,0 +1,50 @@
+:root {
+    --primary-color:#e0e0e0;
+}
+
+.reviews_section {
+    padding: 30px;
+}
+
+.keyword_box {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.keyword {
+    margin: 5px;
+    padding: 2px 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: var(--primary-color);
+}
+
+table, th, td {
+    border: 1px solid var(--primary-color);
+    border-collapse: collapse;
+}
+
+table.reviews_table {
+    width: 100%;
+}
+
+.col1 {
+    width: 70%;
+}
+
+.col2 {
+    width: 10%;
+}
+
+.col3 {
+    width: 10%;
+}
+
+.col4 {
+    width: 10%;
+}
+
+td {
+    padding: 10px;
+}
+

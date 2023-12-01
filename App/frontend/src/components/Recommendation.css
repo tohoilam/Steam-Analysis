@@ -1,0 +1,32 @@
+
+.game_select_box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+
+.game_select_box > select.games_select {
+    width: 80%;
+    height: 20px;
+    border-radius: 5px;
+    border: 1px solid black;
+    margin: 0px 20px;
+    background-color: var(--primary-color);
+}
+
+.game_select_box > button.game_select_button {
+    width: 10%;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid black;
+    margin: 0px 20px;
+    background-color: var(--primary-color);
+    cursor: pointer;
+}
+
+.recommended_games_box {
+    display: flex;
+    justify-content: space-evenly;
+}
+
