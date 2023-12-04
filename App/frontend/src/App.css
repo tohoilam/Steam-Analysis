@@ -1,0 +1,108 @@
+:root {
+  --primary-color:#c7d5e0;
+  --secondary-color:#66c0f4;
+  --tertiary-color:rgb(77, 146, 186);
+  --background-light: #2a475e;
+  --background: #1b2838;
+  --background-dark: #171a21;
+}
+
+body {
+  background-color: var(--background-light);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: rgb(174, 174, 174);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  text-align: center;
+}
+
+h2 {
+  color: var(--tertiary-color);
+}
+
+h3 {
+  margin: 10px 0px 15px 0px;
+}
+
+h4 {
+  margin: 0px 0px 8px 0px;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.main {
+  display: grid;
+  grid-template-rows: 1fr 8fr;
+  grid-template-columns: 1fr 6fr;
+  height: 100vh;
+  background-color: var(--background-dark);
+}
+
+.header {
+  grid-row: 1 / 1;
+  grid-column: 1 / span 2;
+  display: flex;
+  background-color: var(--background-light);
+  border-bottom: 1px solid var(--background-light);
+}
+
+.header > h1 {
+  display: block;
+  margin: auto;
+  align-content: center;
+  justify-content: center;
+}
+
+.nav {
+  grid-row: 2 / span 1;
+  grid-column: 1 / 1;
+  background-color: var(--background);
+  border-right: 1px solid var(--background-light);
+}
+
+.tab-button {
+  padding: 20px 10px;
+  cursor: pointer;
+}
+
+.tab-button:hover {
+  background-color: rgb(50, 50, 50);
+}
+
+.tab-button.active {
+  background-color: #0b1118;
+}
+
+.content {
+  grid-row: 2 / span 1;
+  grid-column: 2 / 2;
+  overflow-y: auto;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: white;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-corner {
+  border-radius: 10px;
+}
+
+/* ::-webkit-scrollbar-track {
+  display: none;
+} */

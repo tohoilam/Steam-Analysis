@@ -1,0 +1,78 @@
+.recommendation_section {
+    padding: 30px;
+}
+
+.game_select_box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+
+.game_select_box > select.games_select {
+    width: 80%;
+    height: 25px;
+    border-radius: 5px;
+    border: 0.2px solid var(--secondary-color);
+    margin: 0px 20px;
+    padding: 0px 10px;
+    background-color: var(--background-light);
+}
+
+.game_select_box > button.game_select_button {
+    width: 10%;
+    height: 25px;
+    border-radius: 5px;
+    border: 1px solid black;
+    margin: 0px 20px;
+    cursor: pointer;
+    background-color: var(--secondary-color);
+    color: var(--background-dark);
+}
+
+.content_recommended_game {
+    max-width: 50%;
+    margin: 0px 30px;
+}
+
+.collaborative_recommended_game {
+    max-width: 50%;
+    margin: 0px 30px 0px 50px;
+}
+
+.games_select {
+    background-color: var(--background-dark);
+}
+
+.recommended_game_title {
+    margin-top: 30px
+}
+
+.recommended_games_box {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 20px;
+}
+
+.recommendation_section table, .recommendation_section th, .recommendation_section td {
+    border: 0px solid var(--primary-color);
+    border-collapse: collapse;
+}
+
+.recommended_games_box .col1 {
+    width: 50px;
+}
+
+.recommended_games_box .col2 {
+    width: 100px;
+}
+
+.recommended_games_box .col4 {
+    max-width: 250px;
+    text-overflow: ellipsis;
+}
+
+.recommended_games_box .col4 {
+    width: 70px;
+}
+

@@ -1,0 +1,49 @@
+.reviews_section {
+    padding: 30px;
+}
+
+.keyword_box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.keyword {
+    margin: 5px;
+    padding: 3px 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: var(--secondary-color);
+    color: var(--background-dark);
+}
+
+table, th, td {
+    border: 1px solid var(--primary-color);
+    border-collapse: collapse;
+}
+
+table.reviews_table {
+    width: 100%;
+}
+
+table.reviews_table .col1 {
+    width: 70%;
+}
+
+table.reviews_table .col2 {
+    width: 10%;
+}
+
+table.reviews_table .col3 {
+    width: 10%;
+}
+
+table.reviews_table .col4 {
+    width: 10%;
+}
+
+td {
+    padding: 10px;
+}
+
