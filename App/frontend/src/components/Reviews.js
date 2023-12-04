@@ -5,7 +5,7 @@ import './Reviews.css'
 
 function Reviews() {
     const [reviewsData, setReviewsData] = useState({});
-    const steam_id = "578080";
+    const steam_id = "289070";
 
     useEffect(() => {
         fetch(`/${steam_id}/reviews`).then(

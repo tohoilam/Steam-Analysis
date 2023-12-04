@@ -5,18 +5,37 @@ import './App.css'
 
 function App() {
 
-    const [data, setData] = useState([{}]);
+    const [loading, setLoading] = useState(true);
     const [activeTab, setActiveTab] = useState('Reviews');
-    const steam_id = "578080";
+    const steam_id = "289070";
 
     const handleTabClick = (tabName) => {
         setActiveTab(tabName);
     };
 
+    useEffect(() => {
+        console.log('fetching');
+        fetch(`/load`).then(
+            res => res.json()
+        ).then(
+            data => {
+                console.log(data);
+                if (data.status === 'OK') {
+                    console.log(data);
+                    setLoading(false);
+                }
+            }
+        )
+    }, []);
+
+    useEffect(() => {
+
+    }, [loading]);
+
     return (
         <div className='main'>
             <div className='header'>
-                <h1>Steam Reviews</h1>
+                <h1>Steam Game Analysis (Sid Meier's Civilization VI)</h1>
             </div>
             <div className="nav">
                 <div
@@ -36,9 +55,11 @@ function App() {
             </div>
             <div className="content">
                 {
-                    (activeTab === 'Reviews')
-                    ? <Reviews/>
-                    : <Recommendation/>
+                    (loading)
+                    ? <div className="loading">Loading...</div>
+                    : (activeTab === 'Reviews')
+                        ? <Reviews/>
+                        : <Recommendation/>
                 }
             </div>
         </div>

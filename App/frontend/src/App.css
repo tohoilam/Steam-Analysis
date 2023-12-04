@@ -7,6 +7,9 @@
   --background-dark: #171a21;
 }
 
+body {
+  background-color: var(--background-light);
+}
 
 * {
   margin: 0;
@@ -51,6 +54,7 @@ h4 {
   grid-column: 1 / span 2;
   display: flex;
   background-color: var(--background-light);
+  border-bottom: 1px solid var(--background-light);
 }
 
 .header > h1 {
@@ -64,6 +68,7 @@ h4 {
   grid-row: 2 / span 1;
   grid-column: 1 / 1;
   background-color: var(--background);
+  border-right: 1px solid var(--background-light);
 }
 
 .tab-button {
